@@ -8,9 +8,9 @@
 def bubble_sort(arr):
     n = len(arr)
     for j in range(0, n-1):
-        for i in range(0, n - 1 - j):
-            if arr[i] > arr[i + 1]:
-                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+        for i in range(0, n-1-j):
+            if arr[i] > arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
 
 
 bubble_sort([5, 10, 45, 6, 0, 2])
@@ -43,7 +43,7 @@ def quick_sort_inplace(array, beg, end):
     if beg < end:
         pivot = partition(array, beg, end)
         quick_sort_inplace(array, beg, pivot)
-        quick_sort_inplace(array, pivot + 1, end)
+        quick_sort_inplace(array, pivot+1, end)
 
 
 def partition(array, beg, end):
@@ -74,9 +74,9 @@ def insert_sort(a):
         index = a[i]
         j = i - 1
         while j >= 0 and a[j] > index:
-            a[j + 1] = a[j]
+            a[j+1] = a[j]
             j -= 1
-        a[j + 1] = index
+        a[j+1] = index
 
 
 # ------------------------------- 希尔排序 ------------------------------
@@ -90,8 +90,8 @@ def shell_sort(array):
     while gap > 0:
         for i in range(gap, n):
             for j in range(i, 0, -gap):
-                if array[j] < array[j - gap]:
-                    array[j], array[j - gap] = array[j - gap], array[j]
+                if array[j] < array[j-gap]:
+                    array[j], array[j-gap] = array[j-gap], array[j]
                 else:
                     break
         gap >>= 1          # 相当于 gap = gap >> 1
@@ -105,8 +105,48 @@ def select_sort(arr):
     n = len(arr)
     for i in range(0, n):
         min_index = i
-        for j in range(i + 1, n):
+        for j in range(i+1, n):
             if arr[min_index] > arr[j]:
                 min_index = i
         if i != min_index:
             arr[min_index], arr[i] = arr[i], arr[min_index]
+
+
+# ------------------------------ 堆排序 ------------------------------------
+# 堆排序：利用堆来进行排序（堆是一种完全二叉树），时间复杂度为O(nlogn)
+# 堆的定义：N个元素的系列{K1,K2,K3...}当且仅当满足下列关系之一时称之为堆。
+#          1、ki <= k2i 且ki <= k2i+1 （最小化堆或小顶堆）
+# 　　      2、ki >= k2i 且ki >= k2i+1 （最大化堆或大顶堆）
+#           其中i = 1,2,3,4..n/2向下取整
+#          堆是一个完全二叉树。所有非终端结点的均值不大于（或不小于）其左右孩子结点的值。
+#         堆顶元素（完全二叉树的根）必为系列中的最大或者最小值。
+# 基本思想：1、将初始化待排序关键子序列(R1,R2....Rn)构建成大顶堆，此堆为初始化无序区。
+#          2、将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,......
+#             Rn-1)和新的有序区（Rn），且满足R[1,2...n-1]<=R[n]
+#          3、由于交换后新的堆顶R[1]可能违反堆的性质，因此需要多当前无序区(R1,R2,......
+#             Rn-1)调整为新堆，然后再次R[1]与无序区最后一个元素交换，得到新的无序区(R1,
+#             R2....Rn-2)和新的有序区（Rn-1,Rn）。不断重复此过程直到有序区的元素个数为
+#             n-1,则整个排序过程完成。
+def fix_down(array, start, end):
+    index = start
+    while True:
+        child = 2*index + 1
+        if child > end:
+            break
+        if child+1 <= end and array[child] < array[child+1]:
+            child += 1
+        if array[index] < array[child]:
+            array[index], array[child] = array[child], array[index]
+            index = child
+        else:
+            break
+
+
+def heap_sort(array):
+    first = len(array)//2 - 1
+    for start in range(first, -1, -1):
+        fix_down(array, start, len(array)-1)
+
+    for end in range(len(array) - 1, 0, -1):
+        array[0], array[end] = array[end], array[0]
+        fix_down(array, 0, end-1)
