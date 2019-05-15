@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../battlefront/.idea/battlefront.iml" filepath="$PROJECT_DIR$/../battlefront/.idea/battlefront.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../bomber/.idea/bomber.iml" filepath="$PROJECT_DIR$/../bomber/.idea/bomber.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dashboard/.idea/dashboard.iml" filepath="$PROJECT_DIR$/../dashboard/.idea/dashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../golden-eye/.idea/golden-eye.iml" filepath="$PROJECT_DIR$/../golden-eye/.idea/golden-eye.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../hyperloop/.idea/hyperloop.iml" filepath="$PROJECT_DIR$/../hyperloop/.idea/hyperloop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../jianzi/.idea/jianzi.iml" filepath="$PROJECT_DIR$/../jianzi/.idea/jianzi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../remittance/.idea/remittance.iml" filepath="$PROJECT_DIR$/../remittance/.idea/remittance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/test.iml" filepath="$PROJECT_DIR$/.idea/test.iml" />
+    </modules>
+  </component>
+</project>
