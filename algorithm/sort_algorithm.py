@@ -63,20 +63,24 @@ def partition(array, beg, end):
     return right
 
 
+a = [36, 65, 5, 12]
+quick_sort_inplace(a, 0, len(a) - 1)
+
+
 # ------------------------------- 插入排序 -----------------------------------
 # 插入排序：插入排序是稳定的
 # 实现思路：与前面的每一个数进行比较，如果前面的数更大则将对应位置的数不断后移，直到找到
 #          一个数小于待排序数为止。
 # 优点：对几乎已经排好序的数据操作时，效率高，既可以达到线性排序的效果
 # 缺点：一般来说效率较低，因为每次只能将数据移动一位
-def insert_sort(a):
-    for i in range(1, len(a)):
-        index = a[i]
+def insert_sort(array):
+    for i in range(1, len(array)):
+        index = array[i]
         j = i - 1
-        while j >= 0 and a[j] > index:
-            a[j+1] = a[j]
+        while j >= 0 and array[j] > index:
+            array[j+1] = array[j]
             j -= 1
-        a[j+1] = index
+            array[j+1] = index
 
 
 # ------------------------------- 希尔排序 ------------------------------
