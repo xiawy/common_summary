@@ -110,9 +110,3 @@ def select_sort(arr):
                 min_index = i
         if i != min_index:
             arr[min_index], arr[i] = arr[i], arr[min_index]
-
-
-i = 100
-while i > 0:
-    print(i)
-    i >>= 1
