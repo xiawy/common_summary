@@ -49,6 +49,7 @@ def quick_sort_inplace(array, beg, end):
 def partition(array, beg, end):
     pivot_index = beg
     pivot, left, right = array[pivot_index], pivot_index + 1, end - 1
+    # 将小的数尽量左移，大的数尽量右移
     while True:
         while left <= right and array[left] < pivot:
             left += 1
@@ -58,19 +59,20 @@ def partition(array, beg, end):
         if left > right:
             break
         array[left], array[right] = array[right], array[left]
-
+    # 最终array[right]必然是 right+时 值大于pivot
     array[pivot_index], array[right] = array[right], array[pivot_index]
+    # 互换后的结果就是 right后的数 >= pivot, right前的数 <= pivot
     return right
 
 
 a = [36, 65, 5, 12]
-quick_sort_inplace(a, 0, len(a) - 1)
+quick_sort_inplace(a, 0, len(a))
 
 
 # ------------------------------- 插入排序 -----------------------------------
 # 插入排序：插入排序是稳定的
-# 实现思路：与前面的每一个数进行比较，如果前面的数更大则将对应位置的数不断后移，直到找到
-#          一个数小于待排序数为止。
+# 实现思路：与前面的每一个数进行比较，若数比选定的数更大，则将该数后移，直到找到一个数小于
+#         待排序数为止。
 # 优点：对几乎已经排好序的数据操作时，效率高，既可以达到线性排序的效果
 # 缺点：一般来说效率较低，因为每次只能将数据移动一位
 def insert_sort(array):
@@ -80,7 +82,7 @@ def insert_sort(array):
         while j >= 0 and array[j] > index:
             array[j+1] = array[j]
             j -= 1
-            array[j+1] = index
+        array[j+1] = index
 
 
 # ------------------------------- 希尔排序 ------------------------------
@@ -104,7 +106,7 @@ def shell_sort(array):
 # ------------------------------- 选择排序 -------------------------------
 # 选择排序：最直观的一种排序方式
 # 排序思路：首先在未排序中找到最小元素，存放在排序序列的起始位置，然后，再从剩余未排序元素中
-#          找到最小元素放在一排序的末尾
+#          找到最小元素放在已排序的末尾
 def select_sort(arr):
     n = len(arr)
     for i in range(0, n):
