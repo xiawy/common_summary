@@ -10,7 +10,6 @@
     <orderEntry type="module" module-name="jianzi" />
     <orderEntry type="module" module-name="dashboard" />
     <orderEntry type="module" module-name="remittance" />
-    <orderEntry type="module" module-name="battlefront" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />
